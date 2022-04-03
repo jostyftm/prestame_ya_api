@@ -19,7 +19,8 @@ class Loan extends Model
     protected $fillable = [
         'client_id',
         'amount',
-        'interests'
+        'interests',
+        'lend_at'
     ];
 
     /**
@@ -28,7 +29,7 @@ class Loan extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'lend_at' => 'datetime',
+        
     ];
 
     /**

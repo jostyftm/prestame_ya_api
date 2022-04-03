@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    
+    $paidAt = \Carbon\Carbon::create(2022, 3, 27, 12, 0, 0);
+    $now = \Carbon\Carbon::now();
+
+    dd($paidAt->diffInMonths($now));
 });

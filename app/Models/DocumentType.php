@@ -15,6 +15,7 @@ class DocumentType extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name'
+        'name',
+        'prefix'
     ];
 }

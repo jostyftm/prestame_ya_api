@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         'paymentType',
         'charges',
         'rolesAndPermissions',
+        'users',
+        'loans'
     ];
 
 
@@ -73,5 +75,21 @@ class DatabaseSeeder extends Seeder
     private function rolesAndPermissions()
     {
         $this->call(RolesAndPermissionSeeder::class);
+    }
+
+    /**
+     * Seed User employee table
+     */
+    private function users()
+    {
+        $this->call(UserSeeder::class);
+    }
+
+    /**
+     * Seed User Loan table
+     */
+    private function loans()
+    {
+        $this->call(LoanSeeder::class);
     }
 }
