@@ -6,6 +6,21 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    private $seeds = [
+        'migrate',
+        'identifictionType',
+        'paymentType',
+        'charges',
+        'rolesAndPermissions',
+    ];
+
+
     /**
      * Seed the application's database.
      *
@@ -13,6 +28,50 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+         foreach($this->seeds as $seed) {
+            $this->command->line("Processing {$seed}");
+            call_user_func([$this, $seed]);
+        }
+    }
+
+    /**
+     * Refresh databases
+     */
+    public function migrate()
+    {
+        $this->command->call('migrate:refresh');
+        $this->command->line('Migrated tables.');
+    }
+
+    /**
+     * Seed IdentificationType table
+     */
+    private function identifictionType()
+    {
+        $this->call(IdentificationTypeSeeder::class);
+    }
+
+    /**
+     * Seed PaymentType table
+     */
+    private function paymentType()
+    {
+        $this->call(PaymentTypeSeeder::class);
+    }
+
+    /**
+     * Seed Charge table
+     */
+    private function charges()
+    {
+        $this->call(ChargeSeeder::class);
+    }
+
+    /**
+     * Seed Rol and Permission table
+     */
+    private function rolesAndPermissions()
+    {
+        $this->call(RolesAndPermissionSeeder::class);
     }
 }
